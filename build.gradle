@@ -25,6 +25,7 @@ repositories {
 
 dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.0.2.RELEASE'
+    compile  group: 'com.github.miwurster', name: 'spring-data-influxdb', version:  '1.7'
 }
 
 jar {

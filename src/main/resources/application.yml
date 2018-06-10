@@ -1,0 +1,7 @@
+spring:
+  influxdb:
+    url: http://127.0.0.1:8086
+    username: admin
+    password: adminPass
+    database: exercise
+    retention-policy: autogen
