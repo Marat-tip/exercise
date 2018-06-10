@@ -6,6 +6,8 @@ import org.influxdb.impl.InfluxDBResultMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.influxdb.InfluxDBTemplate;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/documents/")
+@RequestMapping("/document/")
 public class DocumentController {
 
     private static final String SELECT = "Select LAST(value),\"value\" from docs";
@@ -34,11 +36,11 @@ public class DocumentController {
                 .orElse(Document.DEFAULT);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/last")
-    public Document getLastDocument(@RequestBody Document document) {
+    @RequestMapping(method = RequestMethod.POST, value = "/")
+    public ResponseEntity getLastDocument(@RequestBody Document document) {
         influxDBTemplate.write(Point.measurement("docs")
                 .addField("value", document.getValue())
                 .build());
-        return getLastDocument();
+        return new ResponseEntity(HttpStatus.OK);
     }
 }
