@@ -8,6 +8,6 @@
 **Для сборки и запуска проекта**:\
     Выполнять все команды в папке проекта:\
         1._sudo docker swarm init_\
-        2._sudo docker stack deploy -c docker-compose.yml kcellEx_\
+        2._sudo docker stack deploy -c docker-compose.yml kcellEx_
       
     
