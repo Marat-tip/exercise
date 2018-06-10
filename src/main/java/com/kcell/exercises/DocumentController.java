@@ -36,7 +36,7 @@ public class DocumentController {
                 .orElse(Document.DEFAULT);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/")
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity getLastDocument(@RequestBody Document document) {
         influxDBTemplate.write(Point.measurement("docs")
                 .addField("value", document.getValue())
